@@ -1,4 +1,7 @@
-"""Quirk for TDQ contact sensor (product_id p6sqiuesvhmhvv4f)."""
+"""Quirk for Contact sensor (product_id p6sqiuesvhmhvv4f).
+
+Tuya does not advertise any datapoints for this device.
+"""
 
 from tuya_device_handlers import TUYA_QUIRKS_REGISTRY
 from tuya_device_handlers.builder import DeviceQuirk
