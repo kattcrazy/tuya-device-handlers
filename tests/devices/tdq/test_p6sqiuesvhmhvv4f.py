@@ -39,18 +39,12 @@ def test_mqtt(
     # Trigger mqtt updates
     mock_manager._on_device_report(
         device.id,
-        [{"dpId": 1, "t": 1752456620499, "value": "some_false_value"}],
+        [{"dpId": 101, "t": 1752456620499, "value": False}],
     )
     assert device.status["doorcontact_state"] is False
 
     mock_manager._on_device_report(
         device.id,
-        [{"dpId": 1, "t": 1752456620499, "value": "some_true_value"}],
+        [{"dpId": 101, "t": 1752456620499, "value": True}],
     )
     assert device.status["doorcontact_state"] is True
-
-    mock_manager._on_device_report(
-        device.id,
-        [{"dpId": 1, "t": 1752456620499, "value": True}],
-    )
-    assert device.status["doorcontact_state"] is False
