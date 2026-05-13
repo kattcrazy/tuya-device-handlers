@@ -21,5 +21,10 @@ from tuya_device_handlers.const import DPMode
         dpmode=DPMode.READ,
         enum_range=["low", "middle", "high"],
     )
+    .set_dpid_strategy_to_enum(
+        dpid=1,
+        dpcode="doorcontact_state",
+        enum_mapping_map={"some_true_value": True, "some_false_value": False},
+    )
     .register(TUYA_QUIRKS_REGISTRY)
 )
