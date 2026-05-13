@@ -10,6 +10,7 @@ from tuya_device_handlers.const import DPMode
 (
     DeviceQuirk()
     .applies_to(product_id="p6sqiuesvhmhvv4f")
+    .override_category("mcs")
     .add_dpid_boolean(
         dpid=101,
         dpcode="doorcontact_state",

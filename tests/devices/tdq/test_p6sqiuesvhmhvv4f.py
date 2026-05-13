@@ -17,11 +17,13 @@ def test_default_definition(
 ) -> None:
     """Test quirk adds missing datapoints."""
     device = create_device("tdq_p6sqiuesvhmhvv4f.json")
+    assert device.category == "tdq"
     assert get_binary_sensor_definition(device, "doorcontact_state") is None
     assert get_sensor_definition(device, "battery_state") is None
 
     filled_quirks_registry.initialise_device_quirk(device)
 
+    assert device.category == "mcs"
     assert get_binary_sensor_definition(device, "doorcontact_state") is not None
     assert get_sensor_definition(device, "battery_state") is not None
 
@@ -34,6 +36,7 @@ def test_mqtt(
     mock_manager.device_map[device.id] = device
     filled_quirks_registry.initialise_device_quirk(device)
 
+    assert device.category == "mcs"
     assert "doorcontact_state" not in device.status
 
     # Trigger mqtt updates
