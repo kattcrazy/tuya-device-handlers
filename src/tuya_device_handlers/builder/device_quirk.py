@@ -103,6 +103,9 @@ class DeviceQuirk(DeviceQuirkProtocol):
         self.original_local_strategy = device.local_strategy.copy()
         self.original_status_range = device.status_range.copy()
 
+        if self._override_category is not None:
+            device.category = self._override_category
+
         for key, definition in self._datapoint_definitions.items():
             dpid, dpcode = key
 
